@@ -1,0 +1,21 @@
+<h1 class="title text-center">Backronyms</h1>
+
+<div class="main-container">
+    <div *ngIf="gameState === 'SELECTING_AVATAR' || gameState===''" [@slideInOut]>
+        <app-avatar-picker (avatarSelected)="avatarSelected($event)"></app-avatar-picker>
+    </div>
+
+    <div *ngIf="gameState === 'ENTERING_NAME'" [@slideInOut]>
+
+        <app-name (nameEntered)="nameEntered($event)"></app-name>
+    </div>
+
+    <div *ngIf="gameState === 'WAITING_ROOM'" [@slideInOut]>
+
+        <app-waiting-room (gameState)="setGameState($event)"></app-waiting-room>
+    </div>
+
+    <div *ngIf="gameState === 'GAME_STARTED' || gameState === 'GAME_STARTED:SELECTING_WORD' || gameState === 'GAME_STARTED:ENTER_ANSWERS' || gameState === 'GAME_STARTED:ANSWERS_IN'" [@slideInOut]>
+        <app-game></app-game>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<ng-container *ngIf="gameState === 'GAME_STARTED:SELECTING_WORD'">
+    <ng-container *ngIf="player.isKing">
+        <h3 class="text-center">You are the King! Please choose a word.  {{timer.remaining}}/{{timer.total}}</h3>
+        <div class="form-group">
+            <input [(ngModel)]="chosenWord" type="text" class="form-control">
+            <button (click)="submitChosenWord()" class="btn btn-primary">Submit</button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!player.isKing">
+        <h3 class="text-center">Waiting for King to choose a word... {{timer.remaining}}/{{timer.total}}</h3>
+    </ng-container>
+
+</ng-container>
+
+<ng-container *ngIf="gameState === 'GAME_STARTED:ENTER_ANSWERS'">
+
+    <ng-container *ngIf="player.isKing">
+        <h3 class="text-center">Waiting for players to submit answers</h3>
+    </ng-container>
+
+    <ng-container *ngIf="!player.isKing">
+        <h3 class="text-center">Enter your answer! {{timer.remaining}}/{{timer.total}}</h3>
+        <div class="form-group">
+            <input [(ngModel)]="playerAnswer" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <button (click)="submitAnswer()" class="btn btn-primary">Submit</button>
+        </div>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="gameState === 'GAME_STARTED:ANSWERS_IN' && player.isKing">
+
+    <h3 class="text-center">Vote for your favorite answer</h3>
+
+    <ul>
+        <li (click)="voteAnswer(answer.id)" class="answers" *ngFor="let answer of answers">{{answer.answer}}</li>
+    </ul>
+
+</ng-container>
+
+<ng-container *ngIf="gameState === 'GAME_STARTED:ANSWERS_IN' && !player.isKing">
+    <h3 class="text-center">Waiting for King to choose answers...</h3>
+</ng-container>
+
+
+

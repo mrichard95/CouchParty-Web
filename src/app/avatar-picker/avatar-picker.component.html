@@ -1,0 +1,15 @@
+<div class="text-center">
+    <h3>Choose your avatar</h3>
+    <div class="row avatar-row">
+        <div 
+        *ngFor="let avatar of avatars"
+        [ngClass]="{'selected': isSelectedAvatar(avatar.id)}"
+        (click)="selectAvatar(avatar)"
+        class="col-md-3 avatar-container">
+            <div class="avatar">
+                <img [src]="avatar.imageUrl">
+                <p>{{avatar.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>
