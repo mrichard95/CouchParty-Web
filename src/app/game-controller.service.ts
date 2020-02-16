@@ -26,7 +26,7 @@ export class GameControllerService {
 
   connectToGame(gameRoomId: string, player?: Player) {
     this.gameRoomId = gameRoomId;
-    this.mySocket = new WebSocket(`ws://localhost:8080/game/join/${gameRoomId}`);
+    this.mySocket = new WebSocket(`wss://labs.snapvids.com:8890/game/join/${gameRoomId}`);
 
     this.mySocket.addEventListener('open', () => {
 
