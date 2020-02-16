@@ -32,6 +32,8 @@ export class GameControllerService {
 
       if(player) {
         this.mySocket.send(`pNick:${player.displayName}`);
+        this.mySocket.send(`pAvatar:${player.avatar}`);
+        
       }
 
       this.mySocket.send('who');
