@@ -5,10 +5,10 @@
         *ngFor="let avatar of avatars"
         [ngClass]="{'selected': isSelectedAvatar(avatar.id)}"
         (click)="selectAvatar(avatar)"
-        class="col-md-3 avatar-container">
+        class="col-md-3 col-sm-6 col-6 avatar-container">
             <div class="avatar">
-                <img [src]="avatar.imageUrl">
-                <p>{{avatar.name}}</p>
+                <img [src]="avatar.avatarURL">
+                <p> </p>
             </div>
         </div>
     </div>

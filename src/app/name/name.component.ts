@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NameComponent implements OnInit {
 
   @Output() nameEntered = new EventEmitter<string>();
+  playerName;
 
   constructor() { }
 

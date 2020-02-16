@@ -61,4 +61,8 @@ export class GameComponent implements OnInit {
     this.gameController.voteAnswer(id);
   }
 
+  restartGame() {
+    this.gameController.restartGame();
+  }
+
 }

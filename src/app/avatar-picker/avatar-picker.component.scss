@@ -10,6 +10,14 @@
     margin-top: 20px;
 }
 
+.avatar img {
+    width: 75px;
+    height: 75px;
+}
+
 .selected {
     background-color: #ccc !important;
+}
+
+@media(max-width: 768px) {
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Avatar } from '../models/avatar';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-avatar-picker',
   templateUrl: './avatar-picker.component.html',
@@ -56,9 +58,12 @@ export class AvatarPickerComponent implements OnInit {
 
   selectedAvatar: Avatar;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.httpClient.get('https://labs.snapvids.com:8890/config/').subscribe(res => {
+      this.avatars = res['avatars'];
+    })
   }
 
   selectAvatar(avatar: Avatar) {

@@ -16,6 +16,7 @@ export class WaitingRoomComponent implements OnInit {
 
   playerList: Player[];
   playerCount;
+  playerNum;
 
   playerObject: Player = new Player();
 
@@ -24,6 +25,11 @@ export class WaitingRoomComponent implements OnInit {
   ngOnInit() {
     this.gameController.playerCount.subscribe(pCount => {
       this.playerCount = pCount;
+    });
+
+    this.gameController.playerNumber.subscribe(pNum => {
+      this.playerNum = pNum;
+      console.log(this.playerNum);
     });
 
     this.gameController.playerObject.subscribe(playerObj => {

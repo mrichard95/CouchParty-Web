@@ -1,3 +1,3 @@
 <h3 class="text-center">Waiting for game to start...</h3>
 <h4 class="text-center">{{playerCount}}</h4>
-<button *ngIf="isLeader()" class="text-center btn btn-primary" (click)="startGame()">Start Game</button>
+<button *ngIf="isLeader() && playerNum >= 3" class="text-center btn btn-primary" (click)="startGame()">Start Game</button>

@@ -20,7 +20,7 @@
     </ng-container>
 
     <ng-container *ngIf="!player.isKing">
-        <h3 class="text-center">Enter your answer! {{timer.remaining}}/{{timer.total}}</h3>
+        <h3 class="text-center">Check the TV and enter your answer! {{timer.remaining}}/{{timer.total}}</h3>
         <div class="form-group">
             <input [(ngModel)]="playerAnswer" type="text" class="form-control">
         </div>
@@ -43,6 +43,12 @@
 <ng-container *ngIf="gameState === 'GAME_STARTED:ANSWERS_IN' && !player.isKing">
     <h3 class="text-center">Waiting for King to choose answers...</h3>
 </ng-container>
+
+<ng-container *ngIf="gameState === 'GAME_OVER'">
+    <h3 class="text-center">Game Over! Thanks for playing</h3>
+    <button (click)="restartGame()" *ngIf="player.isKing" class="btn btn-primary">Restart Game</button>
+</ng-container>
+
 
 
 

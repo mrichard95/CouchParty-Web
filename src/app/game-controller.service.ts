@@ -11,6 +11,7 @@ import { BehaviorSubject, of, Observable, fromEventPattern } from 'rxjs';
 export class GameControllerService {
 
   playerCount = new BehaviorSubject<string>('Current players: 0');
+  playerNumber = new BehaviorSubject<number>(0);
   gameState = new BehaviorSubject<GameState>('SELECTING_AVATAR');
   timer = new BehaviorSubject<{}>({remaining: 0, total: 0});
   gameRoomId: string;
@@ -25,7 +26,7 @@ export class GameControllerService {
 
   connectToGame(gameRoomId: string, player?: Player) {
     this.gameRoomId = gameRoomId;
-    this.mySocket = new WebSocket(`wss://labs.snapvids.com:8890/game/join/${gameRoomId}`);
+    this.mySocket = new WebSocket(`ws://localhost:8080/game/join/${gameRoomId}`);
 
     this.mySocket.addEventListener('open', () => {
 
@@ -40,12 +41,16 @@ export class GameControllerService {
 
       if(msg.data.includes("Current players")) {
         this.playerCount.next(msg.data);
+        this.playerNumber.next(Number(msg.data.substring(msg.data.length - 1, msg.data.length)))
       }
 
       if(msg.data.includes('selectingText')) {
         this.changeGameState('GAME_STARTED:SELECTING_WORD');
       }
 
+      if(msg.data.includes('gamestage: 0') && this.gameState.getValue() === 'GAME_STARTED:ANSWERS_IN') {
+        this.changeGameState('GAME_OVER');
+      }
 
       if(msg.data.includes('gamestage: 2')) {
         this.changeGameState('GAME_STARTED:ENTER_ANSWERS');
@@ -79,9 +84,7 @@ export class GameControllerService {
           
           this.answers.next(respObject);
         }
-      } catch(e) {
-        console.error('Error', e);
-      }
+      } catch(e) {}
 
       console.log(msg);
     });
@@ -113,5 +116,9 @@ export class GameControllerService {
 
   voteAnswer(id: string) {
     this.mySocket.send(`{"winningId": "${id}"}`);
+  }
+
+  restartGame() {
+    this.mySocket.send('gStart');
   }
 }
