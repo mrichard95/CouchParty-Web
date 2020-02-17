@@ -67,13 +67,11 @@ export class AvatarPickerComponent implements OnInit {
   }
 
   selectAvatar(avatar: string) {
-    console.log("selected: " + avatar);
     this.avatarSelected.emit(avatar);
   }
 
   isSelectedAvatar(id: number): boolean {
     if(this.selectedAvatar) {
-      console.log(this.selectedAvatar)
       return this.selectedAvatar.id === id;
     }
   }

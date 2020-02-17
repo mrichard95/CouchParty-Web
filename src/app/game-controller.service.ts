@@ -81,14 +81,9 @@ export class GameControllerService {
         }
 
         if(typeof respObject === 'object' && this.gameState.getValue().includes('ANSWERS_IN')) {
-          console.log('answers!', respObject);
-
-          
           this.answers.next(respObject);
         }
       } catch(e) {}
-
-      console.log(msg);
     });
 
     this.mySocket.addEventListener('close', () => {
@@ -114,6 +109,7 @@ export class GameControllerService {
 
   submitAnswer(answer: string) {
     this.mySocket.send(`{"answer": "${answer}"}`);
+    this.changeGameState('GAME_STARTED:ANSWERS_WAITING');
   }
 
   voteAnswer(id: string) {

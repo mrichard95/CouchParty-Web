@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
   }
 
   avatarSelected(avatar: string) {
-    console.log("Selected " + avatar)
     this.player.avatar = avatar;
     this.gameState = 'ENTERING_NAME';
   }
@@ -59,7 +58,6 @@ export class HomeComponent implements OnInit {
   }
 
   setGameState(state) {
-    console.log(state);
     this.gameState = state;
   }
 

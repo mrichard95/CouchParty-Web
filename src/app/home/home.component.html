@@ -15,7 +15,7 @@
         <app-waiting-room (gameState)="setGameState($event)"></app-waiting-room>
     </div>
 
-    <div *ngIf="gameState === 'GAME_STARTED' || gameState === 'GAME_STARTED:SELECTING_WORD' || gameState === 'GAME_STARTED:ENTER_ANSWERS' || gameState === 'GAME_STARTED:ANSWERS_IN' || gameState === 'GAME_OVER'" [@slideInOut]>
+    <div *ngIf="gameState === 'GAME_STARTED' || gameState === 'GAME_STARTED:SELECTING_WORD' || gameState === 'GAME_STARTED:ENTER_ANSWERS' || gameState === 'GAME_STARTED:ANSWERS_IN' || gameState === 'GAME_STARTED:ANSWERS_WAITIN' || gameState === 'GAME_OVER'" [@slideInOut]>
         <app-game></app-game>
     </div>
 </div>

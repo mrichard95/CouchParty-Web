@@ -28,12 +28,10 @@ export class GameComponent implements OnInit {
 
     this.gameController.playerObject.subscribe(pObj => {
       this.player = pObj;
-      console.log('PLAYER OBJECT', this.player);
     });
 
     this.gameController.gameState.subscribe(gState => {
       this.gameState = gState;
-      console.log('GAME STATE CHANGED', this.gameState)
     });
 
     this.gameController.timer.subscribe(t => {
@@ -44,7 +42,6 @@ export class GameComponent implements OnInit {
       for(const prop in answers) {
         this.answers.push({id: prop, answer: answers[prop]});
       }
-      console.log('Answers!!!', this.answers);
     });
 
   }
