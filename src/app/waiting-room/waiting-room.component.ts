@@ -29,7 +29,6 @@ export class WaitingRoomComponent implements OnInit {
 
     this.gameController.playerNumber.subscribe(pNum => {
       this.playerNum = pNum;
-      console.log(this.playerNum);
     });
 
     this.gameController.playerObject.subscribe(playerObj => {
@@ -43,7 +42,6 @@ export class WaitingRoomComponent implements OnInit {
   }
 
   isLeader() {
-    console.log('Player Object', this.playerObject);
     return this.playerObject.isLeader;
   }
 

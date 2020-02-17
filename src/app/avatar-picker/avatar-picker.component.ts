@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AvatarPickerComponent implements OnInit {
 
-  @Output() avatarSelected = new EventEmitter<Avatar>();
+  @Output() avatarSelected = new EventEmitter<string>();
 
   avatars: Avatar[] = [
     {
@@ -66,10 +66,9 @@ export class AvatarPickerComponent implements OnInit {
     })
   }
 
-  selectAvatar(avatar: Avatar) {
-    console.log("selected: " + avatar.imageUrl)
-    this.selectedAvatar = avatar;
-    this.avatarSelected.emit(this.selectedAvatar);
+  selectAvatar(avatar: string) {
+    console.log("selected: " + avatar);
+    this.avatarSelected.emit(avatar);
   }
 
   isSelectedAvatar(id: number): boolean {

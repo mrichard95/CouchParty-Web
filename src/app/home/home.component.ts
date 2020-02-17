@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-  avatarSelected(avatar: Avatar) {
-    console.log("Selected " + avatar.imageUrl)
-    this.player.avatar = avatar.imageUrl;
+  avatarSelected(avatar: string) {
+    console.log("Selected " + avatar)
+    this.player.avatar = avatar;
     this.gameState = 'ENTERING_NAME';
   }
 
